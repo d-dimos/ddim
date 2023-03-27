@@ -10,6 +10,8 @@ from datasets.lsun import LSUN
 from torch.utils.data import Subset
 import numpy as np
 
+from datasets.mnist import ImagePairDataset
+
 
 class Crop(object):
     def __init__(self, x1, x2, y1, y2):
@@ -175,6 +177,11 @@ def get_dataset(args, config):
         )
         test_dataset = Subset(dataset, test_indices)
         dataset = Subset(dataset, train_indices)
+
+    elif config.data.dataset == "mnist":
+        dataset = ImagePairDataset(train_path="/content/content/mnist_blur/train")
+        test_dataset = ImagePairDataset(test_path="/content/content/mnist_blur/test")
+
     else:
         dataset, test_dataset = None, None
 
