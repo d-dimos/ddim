@@ -179,8 +179,8 @@ def get_dataset(args, config):
         dataset = Subset(dataset, train_indices)
 
     elif config.data.dataset == "mnist":
-        dataset = ImagePairDataset(train_path="/content/content/mnist_blur/train")
-        test_dataset = ImagePairDataset(test_path="/content/content/mnist_blur/test")
+        dataset = ImagePairDataset("/content/content/mnist_blur/train")
+        test_dataset = ImagePairDataset("/content/content/mnist_blur/test")
 
     else:
         dataset, test_dataset = None, None
